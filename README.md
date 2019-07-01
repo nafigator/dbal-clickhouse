@@ -168,16 +168,16 @@ while ($row = $stmt->fetch()) {
 
 ### Select using placeholders with arrays as values
 ```php
-$stmt = $conn->prepare('SELECT authorId FROM articles WHERE categoryId IN (:categoryId)');
+$stmt = $conn->prepare('SELECT authorId FROM articles WHERE categoryId IN (:categoryIds)');
 
-$stmt->bindValue('categoryId', [123, 124], \Doctrine\DBAL\Connection::PARAM_INT_ARRAY);
+$stmt->bindValue('categoryIds', [123, 124], \Doctrine\DBAL\Connection::PARAM_INT_ARRAY);
 $stmt->execute();
 $result = $stmt->fetchAll();
 ```
 ```php
-$stmt = $conn->prepare('SELECT authorId FROM articles WHERE categoryName IN (:categoryName)');
+$stmt = $conn->prepare('SELECT authorId FROM articles WHERE categoryName IN (:categoryNames)');
 
-$stmt->bindValue('categoryId', ['Auto', 'News'], \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
+$stmt->bindValue('categoryNames', ['Auto', 'News'], \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
 $stmt->execute();
 $result = $stmt->fetchAll();
 ```
